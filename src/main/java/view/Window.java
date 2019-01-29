@@ -12,23 +12,27 @@ import javafx.stage.Stage;
 public class Window {
     private Stage stage;
     private Controller controller;
-    private TextArea historyTextArea;
+    private TextArea responseTextArea;
+    private StringBuilder history;
 
     public Window(){
         controller=new Controller(this);
+        history=new StringBuilder();
         VBox vBox=new VBox();
         Label hostLabel=new Label("Host");
         Label requestLabel=new Label("Request");
-        Label historyLabel=new Label("History");
+        Label responseLabel=new Label("History");
         TextField hostField=new TextField();
         hostField.setText("www.martinbroadhurst.com");
         TextArea requestTextArea=new TextArea();
         requestTextArea.setText("GET / HTTP/1.0");
         requestTextArea.setPrefSize(800,200);
-        historyTextArea=new TextArea();
-        historyTextArea.setPrefSize(800,400);
+        responseTextArea=new TextArea();
+        responseTextArea.setPrefSize(800,400);
         Button sendRequestButton=new Button("Send request");
         sendRequestButton.setOnAction(e->{
+            history.append("REQUEST\n"+requestTextArea.getText()+"\n");
+            responseTextArea.setText(history.toString());
             controller.sendRequest(hostField.getText(),requestTextArea.getText()+"\n\n");
         });
 
@@ -38,8 +42,8 @@ public class Window {
                 requestLabel,
                 requestTextArea,
                 sendRequestButton,
-                historyLabel,
-                historyTextArea
+                responseLabel,
+                responseTextArea
         );
 
         Scene scene=new Scene(vBox);
@@ -49,7 +53,8 @@ public class Window {
     }
 
     public void returnResponse(String response){
-        historyTextArea.setText(response);
+        history.append("RESPONSE\n"+response);
+        responseTextArea.setText(history.toString());
     }
 
     public void show(){

@@ -21,12 +21,12 @@ public class HTTPClient {
                 writer = new PrintWriter(socket.getOutputStream(), true);
                 writer.println(request);
                 writer.flush();
-                String response="";
+                StringBuilder response=new StringBuilder();
                 String str="";
                 while ((str = reader.readLine()) != null) {
-                    response+=str+"\n";
+                    response.append(str+"\n");
                 }
-                returnResponse(response);
+                returnResponse(response.toString());
 
             }
             finally {
