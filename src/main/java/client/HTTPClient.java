@@ -1,9 +1,9 @@
 package client;
 
 import controller.Controller;
+import exception.NoInternetConnectionException;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 
 public class HTTPClient {
@@ -13,38 +13,36 @@ public class HTTPClient {
     private static final int PORT = 80;
     private static Controller controller;
 
-    public static void sendRequest(String host, String request){
+    public static String sendRequest(String host, String request) throws NoInternetConnectionException {
         try {
-            try {
-                socket = new Socket(host, PORT);
-                reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                writer = new PrintWriter(socket.getOutputStream(), true);
-                writer.println(request);
-                writer.flush();
-                StringBuilder response=new StringBuilder();
-                String str="";
-                while ((str = reader.readLine()) != null) {
-                    response.append(str+"\n");
-                }
-                returnResponse(response.toString());
+            socket = new Socket(host, PORT);
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new PrintWriter(socket.getOutputStream(), true);
 
+            if(socket == null)
+                throw new NoInternetConnectionException();
+
+            writer.println(request);
+            writer.flush();
+            StringBuilder response = new StringBuilder();
+            String str="";
+            while ((str = reader.readLine()) != null) {
+                response.append(str + "\n");
             }
-            finally {
-                socket.close();
-                writer.close();
-                reader.close();
-            }
+            //returnResponse(response.toString());
+
+            socket.close();
+            writer.close();
+            reader.close();
+
+            return response.toString();
         }
         catch (IOException e){
-            e.getMessage();
+            return e.getMessage();
         }
     }
 
     public static void setController(Controller c){
         controller=c;
-    }
-
-    private static void returnResponse(String response){
-        controller.returnResponse(response);
     }
 }
