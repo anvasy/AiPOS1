@@ -19,16 +19,12 @@ public class Window {
         controller=new Controller(this);
         history=new StringBuilder();
         VBox vBox=new VBox();
-        Label hostLabel=new Label("Host");
-        Label requestLabel=new Label("Request");
+        Label UrlLabel=new Label("URL");
         Label responseLabel=new Label("History");
-        TextField hostField=new TextField();
-        hostField.setText("www.martinbroadhurst.com");
-        TextArea requestTextArea=new TextArea();
-        requestTextArea.setText("GET / HTTP/1.0");
-        requestTextArea.setPrefSize(800,200);
+        TextField UrlField=new TextField();
+        UrlField.setText("www.martinbroadhurst.com");
         responseTextArea=new TextArea();
-        responseTextArea.setPrefSize(800,400);
+        responseTextArea.setPrefSize(800,800);
         Button sendRequestButton=new Button("Send request");
         sendRequestButton.setOnAction(e->{
             history.append("REQUEST\n"+requestTextArea.getText()+"\n");
@@ -37,7 +33,7 @@ public class Window {
         });
 
         vBox.getChildren().addAll(
-                hostLabel,
+                UrlLabel,
                 hostField,
                 requestLabel,
                 requestTextArea,

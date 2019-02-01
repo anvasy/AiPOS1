@@ -8,7 +8,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println(URLFormatter.getSubstring("ru.stackoverflow.com/sdf",URLFormatter.HOST_PATTERN));
+        System.out.println(URLFormatter.getSubstring("ru.stackoverflow.com/sdf?qwe=1&ewq=2",URLFormatter.PARAMS_PATTERN));
         Window window=new Window();
         window.show();
 
