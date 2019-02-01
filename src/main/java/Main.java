@@ -6,8 +6,7 @@ import view.Window;
 public class Main extends Application{
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        URLFormatter.check("ru.stackoverflow.com/sgg/adsf?dsgf=dsfg&dsf=sdd");
+    public void start(Stage primaryStage) {
         Window window=new Window();
         window.show();
     }

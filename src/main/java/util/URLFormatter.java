@@ -8,16 +8,8 @@ import java.util.regex.Pattern;
 public class URLFormatter {
     private static Pattern resourcePattern = Pattern.compile("\\/[a-z0-9=?\\-\\/&]*$");
     private static Pattern hostPattern = Pattern.compile("(.+\\.)?.+\\.[a-z]{2,4}(:\\d+)?");
+    private static Pattern ipPattern = Pattern.compile("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$");
     private static Pattern responseStatusPattern = Pattern.compile("^HTTP\\/\\d\\.\\d\\s+\\d{3}\\s+.+");
-
-    public static String getSubstring(String url,String regex){
-        Matcher matcher = resourcePattern.matcher(url);
-        String substr = "";
-        if (matcher.find()) {
-            substr += matcher.group();
-        }
-        return substr;
-    }
 
     public static ResponseStatus getResponseStatus(String response) {
         Matcher statusMatcher = responseStatusPattern.matcher(response);
@@ -34,18 +26,18 @@ public class URLFormatter {
 
     public static boolean validateHost(String host) {
         Matcher matcher = hostPattern.matcher(host);
-        return matcher.find();
+        if(matcher.find())
+            return true;
+        else {
+            matcher = ipPattern.matcher(host);
+            return matcher.find();
+        }
     }
 
-    //delete later
-    public static void check(String str) {
-        Matcher matcher = resourcePattern.matcher(str);
+    public static String prepareHost(String host) {
+        Matcher matcher = hostPattern.matcher(host);
         if (matcher.find())
-           System.out.println(matcher.group());
-
-        matcher = hostPattern.matcher(str);
-        if (matcher.find())
-            System.out.println(matcher.group());
-
+            host = matcher.group();
+        return host.replaceAll("http://", "");
     }
 }

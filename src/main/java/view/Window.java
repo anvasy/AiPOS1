@@ -17,7 +17,7 @@ public class Window {
     private StringBuilder history;
 
     public Window(){
-        controller = new Controller(this);
+        controller = new Controller();
         history = new StringBuilder();
         VBox vBox = new VBox();
         Label hostLabel = new Label("Host");
@@ -39,7 +39,6 @@ public class Window {
         responseTextArea.setEditable(false);
         Button sendRequestButton = new Button("Send request");
         sendRequestButton.setOnAction(e->{
-//            history.append("REQUEST\n" + comboBox.getSelectionModel().getSelectedItem()+ "\n\n");
             responseTextArea.setText(history.toString());
             String request=comboBox.getSelectionModel().getSelectedItem()+"\n\n";
             if(comboBox.getSelectionModel().getSelectedItem()==RequestMethod.POST){
@@ -51,9 +50,7 @@ public class Window {
                 entityBody=entityBody.substring(0,entityBody.length()-1);
                 request+=entityBody;
             }
-            history.append("REQUEST\n" + request+"\n\n");
-
-//            returnResponse(controller.sendRequest(hostField.getText(),comboBox.getSelectionModel().getSelectedItem() +"\n\n"));
+            history.append("REQUEST\n" + request+"\n");
             returnResponse(controller.sendRequest(hostField.getText(),request));
         });
 
@@ -70,7 +67,6 @@ public class Window {
                 comboBox,
                 entityLabel,
                 entityField,
-                //requestTextArea,
                 sendRequestButton,
                 responseLabel,
                 historyLabel,
@@ -93,4 +89,5 @@ public class Window {
     public void show(){
         stage.show();
     }
+
 }
