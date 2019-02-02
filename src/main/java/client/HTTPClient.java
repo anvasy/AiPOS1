@@ -1,6 +1,5 @@
 package client;
 
-import controller.Controller;
 import exception.NoInternetConnectionException;
 
 import java.io.*;
@@ -11,7 +10,6 @@ public class HTTPClient {
     private static PrintWriter writer;
     private static BufferedReader reader;
     private static final int PORT = 80;
-    private static Controller controller;
 
     public static String sendRequest(String host, String request) throws NoInternetConnectionException {
         try {
@@ -25,7 +23,7 @@ public class HTTPClient {
             writer.println(request);
             writer.flush();
             StringBuilder response = new StringBuilder();
-            String str="";
+            String str;
             while ((str = reader.readLine()) != null) {
                 response.append(str + "\n");
             }
@@ -39,9 +37,5 @@ public class HTTPClient {
         catch (IOException e){
             return e.getMessage();
         }
-    }
-
-    public static void setController(Controller c){
-        controller=c;
     }
 }
