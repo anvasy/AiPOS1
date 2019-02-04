@@ -6,14 +6,13 @@ import java.io.*;
 import java.net.Socket;
 
 public class HTTPClient {
-    private static Socket socket;
-    private static PrintWriter writer;
-    private static BufferedReader reader;
-    private static final int PORT = 80;
+    private Socket socket;
+    private PrintWriter writer;
+    private BufferedReader reader;
 
-    public static String sendRequest(String host, String request) throws NoInternetConnectionException {
+    public String sendRequest(String host, int port, String request) throws NoInternetConnectionException {
         try {
-            socket = new Socket(host, PORT);
+            socket = new Socket(host, port);
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer = new PrintWriter(socket.getOutputStream(), true);
 
