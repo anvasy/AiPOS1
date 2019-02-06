@@ -7,7 +7,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) {
-        Window window=new Window();
+        Window window = new Window();
         window.show();
     }
 

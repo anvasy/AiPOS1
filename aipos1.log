@@ -1,0 +1,14 @@
+20:54:07,315  INFO JavaFX Application Thread Controller:logRequestStatus:27 - OK
+20:59:22,200  INFO JavaFX Application Thread Controller:logRequestStatus:26 - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+21:19:25,511  INFO JavaFX Application Thread controller.Controller:logRequestStatus:26 - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+21:19:58,746  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+21:21:45,761  INFO JavaFX Application Thread - FOR HOST www.martinbroadhust.com RESPONSE STATUS: null
+21:21:55,674  INFO JavaFX Application Thread - FOR HOST www.martinbroadhust.co RESPONSE STATUS: null
+21:22:13,962  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+21:22:28,083  INFO JavaFX Application Thread - FOR HOST www.hi.com RESPONSE STATUS: MOVED_PERMANENTLY
+22:33:57,460  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+22:37:04,087  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+22:52:59,073  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+22:56:51,474  INFO JavaFX Application Thread - FOR HOST www.hi.com RESPONSE STATUS: null
+22:57:00,717  INFO JavaFX Application Thread - FOR HOST www.hi.com RESPONSE STATUS: null
+22:57:13,022  INFO JavaFX Application Thread - FOR HOST www.martinoadhurst.com RESPONSE STATUS: null
