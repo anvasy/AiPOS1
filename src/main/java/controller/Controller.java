@@ -7,23 +7,32 @@ import util.URLFormatter;
 import view.Window;
 
 public class Controller {
+
     private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Controller.class);
     private Window window;
-
+    private HTTPClient httpClient;
+  
     public Controller(Window window) {
         this.window = window;
     }
 
-    public String sendRequest(String host, String request){
+
+    public Controller(Window window){
+        this.window=window;
+        httpClient=new HTTPClient();
+    }
+
+    public String sendRequest(String host, int port, String request){
         if(!URLFormatter.validateHost(host))
-            return "INCORRECT HOST";
+          return "INCORRECT HOST";
 
         host = URLFormatter.prepareHost(host);
         String response;
         try {
-            response = HTTPClient.sendRequest(host, request);
+            response = HTTPClient.sendRequest(host, port, request);
             response = checkResponseStatus(response);
             logRequestStatus(host, URLFormatter.getResponseStatus(response));
+
         } catch (NoInternetConnectionException ex) {
             return "NO INTERNET CONNECTION!";
         }

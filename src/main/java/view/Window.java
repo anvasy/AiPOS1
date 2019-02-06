@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import structure.Headers;
 import structure.RequestMethod;
 import structure.ResponseStatus;
 import util.URLFormatter;
@@ -15,23 +16,32 @@ import util.URLFormatter;
 import java.util.Date;
 
 public class Window {
-    private Stage stage;
+    private Scene scene;
     private Controller controller;
     private TextArea responseTextArea;
     private StringBuilder history;
     private TextArea logArea;
     private TextField hostField;
 
-    public Window() {
-        controller = new Controller(this);
+    public Window(){
+        responseTextArea = new TextArea();
         history = new StringBuilder();
+        controller = new Controller(this);
+        scene = new Scene(getContent());
+    }
+
+    private VBox getContent(){
         VBox vBox = new VBox();
         Label hostLabel = new Label("Host");
+        Label portLabel=new Label("Port");
         Label requestLabel = new Label("Request");
         Label responseLabel = new Label("Response");
         Label historyLabel = new Label("History");
         hostField = new TextField();
         hostField.setText("www.martinbroadhurst.com");
+
+        TextField portField=new TextField();
+        portField.setText("80");
         Label entityLabel = new Label("Entity body");
         TextArea entityField = new TextArea();
         entityField.setPrefSize(800, 100);
@@ -50,20 +60,26 @@ public class Window {
         responseTextArea.setEditable(false);
 
         Button sendRequestButton = new Button("Send request");
-        sendRequestButton.setOnAction(e -> {
+        sendRequestButton.setOnAction(e->{
+            int port = Integer.valueOf(portField.getText());
             responseTextArea.setText(history.toString());
-            String request = comboBox.getSelectionModel().getSelectedItem() + "\n\n";
-            if (comboBox.getSelectionModel().getSelectedItem() == RequestMethod.POST) {
+            String request = comboBox.getSelectionModel().getSelectedItem()+"\n";
+            Headers headers[] = Headers.values();
+            for(Headers header : headers){
+                request += header + "\n";
+            }
+            request += "\n";
+            if(comboBox.getSelectionModel().getSelectedItem() == RequestMethod.POST){
                 String[] paramsArray = entityField.getText().split("\n");
                 String entityBody = "";
-                for (String param : paramsArray) {
+                for(String param : paramsArray) {
                     entityBody += param + "&";
                 }
                 entityBody = entityBody.substring(0, entityBody.length() - 1);
                 request += entityBody;
             }
             history.append("REQUEST\n" + request + "\n");
-            returnResponse(controller.sendRequest(hostField.getText(), request));
+            returnResponse(controller.sendRequest(hostField.getText(), port, request));
         });
 
         comboBox.setOnAction(e -> {
@@ -81,6 +97,8 @@ public class Window {
         vBox.getChildren().addAll(
                 hostLabel,
                 hostField,
+                portLabel,
+                portField,
                 requestLabel,
                 comboBox,
                 entityLabel,
@@ -93,24 +111,21 @@ public class Window {
                 logArea
         );
 
-        Scene scene = new Scene(vBox);
-        stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("AiPOS 1 HTTP client");
+        return vBox;
+    }
+
+    public Scene getScene(){
+        return scene;
     }
 
     private void returnResponse(String response) {
         history.append("RESPONSE\n" + response + "\n=================\n=================\n\n");
         responseTextArea.setText(history.toString());
+        responseTextArea.setScrollTop(Double.POSITIVE_INFINITY);
     }
 
     public void logInfo(ResponseStatus status) {
         logArea.setText(logArea.getText() + "\n" + new Date() + "   "
                 + hostField.getText() + "    " + status);
     }
-
-    public void show() {
-        stage.show();
-    }
-
 }
