@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class URLFormatter {
     private static Pattern resourcePattern = Pattern.compile("\\/[a-z0-9=?\\-\\/&]*$");
-    private static Pattern hostPattern = Pattern.compile("(.+\\.)?.+\\.[a-z]{2,4}(:\\d+)?");
+    private static Pattern hostPattern = Pattern.compile("((.+\\.)?.+\\.[a-z]{2,4})|(.+)(:\\d+)?");
     private static Pattern ipPattern = Pattern.compile("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$");
     private static Pattern responseStatusPattern = Pattern.compile("^HTTP\\/\\d\\.\\d\\s+\\d{3}\\s+.+");
 

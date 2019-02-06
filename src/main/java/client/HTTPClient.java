@@ -27,9 +27,9 @@ public class HTTPClient {
                 response.append(str + "\n");
             }
 
-            socket.close();
             writer.close();
             reader.close();
+            socket.close();
 
             return response.toString();
         }
