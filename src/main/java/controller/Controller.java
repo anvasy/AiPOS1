@@ -15,8 +15,8 @@ public class Controller {
     }
 
     public String sendRequest(String host, int port, String request){
-        if(!URLFormatter.validateHost(host))
-            return "INCORRECT HOST";
+//        if(!URLFormatter.validateHost(host))
+//            return "INCORRECT HOST";
 
         host = URLFormatter.prepareHost(host);
         String response;
