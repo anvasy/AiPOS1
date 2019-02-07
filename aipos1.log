@@ -12,3 +12,6 @@
 22:56:51,474  INFO JavaFX Application Thread - FOR HOST www.hi.com RESPONSE STATUS: null
 22:57:00,717  INFO JavaFX Application Thread - FOR HOST www.hi.com RESPONSE STATUS: null
 22:57:13,022  INFO JavaFX Application Thread - FOR HOST www.martinoadhurst.com RESPONSE STATUS: null
+23:25:41,486  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+21:14:13,296  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
+22:45:25,837  INFO main - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: null
