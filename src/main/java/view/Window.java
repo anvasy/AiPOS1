@@ -5,9 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import structure.Headers;
 import structure.RequestMethod;
 import structure.ResponseStatus;
@@ -26,21 +24,21 @@ public class Window {
     public Window(){
         responseTextArea = new TextArea();
         history = new StringBuilder();
-        controller = new Controller(this);
+        controller = new Controller();
         scene = new Scene(getContent());
     }
 
     private VBox getContent(){
         VBox vBox = new VBox();
         Label hostLabel = new Label("Host");
-        Label portLabel=new Label("Port");
+        Label portLabel = new Label("Port");
         Label requestLabel = new Label("Request");
         Label responseLabel = new Label("Response");
         Label historyLabel = new Label("History");
         hostField = new TextField();
         hostField.setText("www.martinbroadhurst.com");
 
-        TextField portField=new TextField();
+        TextField portField = new TextField();
         portField.setText("80");
         Label entityLabel = new Label("Entity body");
         TextArea entityField = new TextArea();
@@ -119,6 +117,8 @@ public class Window {
     }
 
     private void returnResponse(String response) {
+        logInfo(URLFormatter.getResponseStatus(response));
+        response = checkResponseStatus(response);
         history.append("RESPONSE\n" + response + "\n=================\n=================\n\n");
         responseTextArea.setText(history.toString());
         responseTextArea.setScrollTop(Double.POSITIVE_INFINITY);
@@ -127,5 +127,14 @@ public class Window {
     public void logInfo(ResponseStatus status) {
         logArea.setText(logArea.getText() + "\n" + new Date() + "   "
                 + hostField.getText() + "    " + status);
+    }
+
+    private String checkResponseStatus(String response) {
+        ResponseStatus status = URLFormatter.getResponseStatus(response);
+        if(status == null)
+            return "Not found";
+        if(!status.equals(ResponseStatus.OK) && status.getMessage()!= null)
+            return status.getCode() + " - " + status.getMessage();
+        return response;
     }
 }
