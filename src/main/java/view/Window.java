@@ -10,9 +10,14 @@ import structure.Headers;
 import structure.RequestMethod;
 import structure.ResponseStatus;
 import util.URLFormatter;
+import constants.Constants;
 
 import java.util.Date;
 
+/**
+ * GUI Class
+ * @author Aliaksandr Yakutsin
+ */
 public class Window {
     private Scene scene;
     private Controller controller;
@@ -21,6 +26,9 @@ public class Window {
     private TextArea logArea;
     private TextField hostField;
 
+    /**
+     *Window class constructor
+     */
     public Window(){
         responseTextArea = new TextArea();
         history = new StringBuilder();
@@ -28,19 +36,24 @@ public class Window {
         scene = new Scene(getContent());
     }
 
+
+    /**
+     * Creates and fulfills content for scene
+     * @return returns fulfilled VBox
+     */
     private VBox getContent(){
         VBox vBox = new VBox();
-        Label hostLabel = new Label("Host");
-        Label portLabel = new Label("Port");
-        Label requestLabel = new Label("Request");
-        Label responseLabel = new Label("Response");
-        Label historyLabel = new Label("History");
+        Label hostLabel = new Label(Constants.HOST);
+        Label portLabel = new Label(Constants.PORT);
+        Label requestLabel = new Label(Constants.REQUEST);
+        Label responseLabel = new Label(Constants.RESPONSE);
+        Label historyLabel = new Label(Constants.HISTORY);
         hostField = new TextField();
-        hostField.setText("www.martinbroadhurst.com");
+        hostField.setText(Constants.DEFAULT_HOST);
 
         TextField portField = new TextField();
-        portField.setText("80");
-        Label entityLabel = new Label("Entity body");
+        portField.setText(Constants.DEFAULT_PORT);
+        Label entityLabel = new Label(Constants.ENTITY_BODY);
         TextArea entityField = new TextArea();
         entityField.setPrefSize(800, 100);
         entityField.setVisible(false);
@@ -57,7 +70,7 @@ public class Window {
         responseTextArea.setPrefSize(800, 300);
         responseTextArea.setEditable(false);
 
-        Button sendRequestButton = new Button("Send request");
+        Button sendRequestButton = new Button(Constants.SEND_REQUEST);
         sendRequestButton.setOnAction(e->{
             int port = Integer.valueOf(portField.getText());
             responseTextArea.setText(history.toString());
@@ -86,7 +99,7 @@ public class Window {
             entityField.setVisible(post);
         });
 
-        Button clearHistoryButton = new Button("Clear");
+        Button clearHistoryButton = new Button(Constants.CLEAR);
         clearHistoryButton.setOnAction(e -> {
             history.delete(0, history.length());
             responseTextArea.setText("");
@@ -112,10 +125,18 @@ public class Window {
         return vBox;
     }
 
+    /**
+     * Get scene for adding it to Stage {@link Window#scene}
+     * @return returns scene for adding it to Stage{@link Window#scene}
+     */
     public Scene getScene(){
         return scene;
     }
 
+    /**
+     * Logs and append response to {@link Window#history}
+     * @param response - Host's response to client's request
+     */
     private void returnResponse(String response) {
         logInfo(URLFormatter.getResponseStatus(response));
         response = checkResponseStatus(response);
@@ -124,11 +145,21 @@ public class Window {
         responseTextArea.setScrollTop(Double.POSITIVE_INFINITY);
     }
 
+    /**
+     * Adding logs to {@link Window#logArea})
+     * @param status Response status - response code and message
+     * @see ResponseStatus
+     */
     public void logInfo(ResponseStatus status) {
         logArea.setText(logArea.getText() + "\n" + new Date() + "   "
                 + hostField.getText() + "    " + status);
     }
 
+    /**
+     * Response status checking
+     * @param response response
+     * @return response
+     */
     private String checkResponseStatus(String response) {
         ResponseStatus status = URLFormatter.getResponseStatus(response);
         if(status == null)

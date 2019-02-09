@@ -1,3 +1,5 @@
+package main;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import util.URLFormatter;
@@ -10,8 +12,6 @@ public class Main extends Application{
         Window window = new Window();
         primaryStage.setScene(window.getScene());
         primaryStage.show();
-
-        System.out.println(URLFormatter.validateHost("http://68.183.98.116:8080/dasfg/afsdgf"));
     }
 
     public static void main(String[] args) {

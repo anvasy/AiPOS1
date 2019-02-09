@@ -1,5 +1,8 @@
 package structure;
 
+/**
+ * @author Aliaksandr Yakutsin
+ */
 public enum RequestMethod {
     GET{
         @Override

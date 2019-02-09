@@ -1,5 +1,8 @@
 package structure;
 
+/**
+ * @author Anna Vasilyeva
+ */
 public enum ResponseStatus {
     OK(200), CREATED(201), ACCEPTED(202), NO_CONTENT(204), PARTIAL_CONTENT(206),
     MOVED_PERMANENTLY(301, "This and all future requests should be directed to the given URI."), FOUND(302), NOT_MODIFIED(304),

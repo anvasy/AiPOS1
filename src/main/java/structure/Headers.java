@@ -1,5 +1,8 @@
 package structure;
 
+/**
+ * @author Aliaksandr Yakutsin
+ */
 public enum Headers {
     ACCEPT{
         @Override
@@ -25,7 +28,6 @@ public enum Headers {
                     " (KHTML, like Gecko)" +
                     " Chrome/66.0.3359.139" +
                     " Safari/537.36";
-
         }
     }
 }

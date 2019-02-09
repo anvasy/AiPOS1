@@ -5,11 +5,23 @@ import exception.NoInternetConnectionException;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * Client for working with network
+ * @author Aliaksandr Yakutsin
+ */
 public class HTTPClient {
     private Socket socket;
     private PrintWriter writer;
     private BufferedReader reader;
 
+    /**
+     * Sends request to server
+     * @param host Address of target node at network to send request
+     * @param port Number of interface at host
+     * @param request Request to server, specifies method, resource and version of HTTP protocol, also headers
+     * @return Returns server's response
+     * @throws NoInternetConnectionException Throws {@link NoInternetConnectionException} if connection can't be established
+     */
     public String sendRequest(String host, int port, String request) throws NoInternetConnectionException {
         try {
             socket = new Socket(host, port);

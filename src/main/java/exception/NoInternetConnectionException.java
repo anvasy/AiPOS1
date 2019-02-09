@@ -1,5 +1,8 @@
 package exception;
 
+/**
+ * @author Anna Vasilyeva
+ */
 public class NoInternetConnectionException extends Exception {
 
     public NoInternetConnectionException() { }
