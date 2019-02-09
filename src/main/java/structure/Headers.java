@@ -10,14 +10,12 @@ public enum Headers {
             return "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
         }
     },
-
     ACCEPT_LANGUAGE{
         @Override
         public String toString() {
             return "Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7";
         }
     },
-
     USER_AGENT{
         @Override
         public String toString() {

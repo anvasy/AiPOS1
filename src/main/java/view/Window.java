@@ -127,7 +127,7 @@ public class Window {
 
     /**
      * Get scene for adding it to Stage {@link Window#scene}
-     * @return returns scene for adding it to Stage{@link Window#scene}
+     * @return returns scene for adding it to Stage {@link Window#scene}
      */
     public Scene getScene(){
         return scene;
@@ -146,7 +146,7 @@ public class Window {
     }
 
     /**
-     * Adding logs to {@link Window#logArea})
+     * Adding logs to {@link Window#logArea}
      * @param status Response status - response code and message
      * @see ResponseStatus
      */

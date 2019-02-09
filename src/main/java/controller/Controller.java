@@ -30,8 +30,9 @@ public class Controller {
      * @return If host is invalid returns "INCORRECT HOST". If everything is fine returns server's response.
      */
     public String sendRequest(String host, int port, String request){
-        if(!URLFormatter.validateHost(host))
-          return "INCORRECT HOST";
+        if(!URLFormatter.validateHost(host)) {
+            return "INCORRECT HOST";
+        }
 
         host = URLFormatter.prepareHost(host);
         String response;

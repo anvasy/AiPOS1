@@ -10,14 +10,12 @@ public enum RequestMethod {
             return "GET / HTTP/1.0";
         }
     },
-
     POST{
         @Override
         public String toString() {
             return "POST / HTTP/1.0";
         }
     },
-
     HEAD{
         @Override
         public String toString() {

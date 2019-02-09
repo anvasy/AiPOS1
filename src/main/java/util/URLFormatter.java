@@ -37,7 +37,7 @@ public class URLFormatter {
 
     /**
      * Checking is host valid
-     * @param host host
+     * @param host Address of target node at network to send request
      * @return if host is valid returns true, else returns false
      */
     public static boolean validateHost(String host) {

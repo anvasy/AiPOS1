@@ -20,7 +20,7 @@ public class HTTPClient {
      * @param port Number of interface at host
      * @param request Request to server, specifies method, resource and version of HTTP protocol, also headers
      * @return Returns server's response
-     * @throws NoInternetConnectionException Throws {@link NoInternetConnectionException} if connection can't be established
+     * @throws NoInternetConnectionException Threw if connection can't be established
      */
     public String sendRequest(String host, int port, String request) throws NoInternetConnectionException {
         try {
