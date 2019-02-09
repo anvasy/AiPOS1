@@ -1,5 +1,3 @@
-package tests;
-
 import org.junit.Test;
 import structure.ResponseStatus;
 import util.URLFormatter;
