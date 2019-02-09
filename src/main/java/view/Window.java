@@ -108,7 +108,6 @@ public class Window {
                 clearHistoryButton,
                 logArea
         );
-
         return vBox;
     }
 
@@ -124,12 +123,12 @@ public class Window {
         responseTextArea.setScrollTop(Double.POSITIVE_INFINITY);
     }
 
-    public void logInfo(ResponseStatus status) {
+    private void logInfo(ResponseStatus status) {
         logArea.setText(logArea.getText() + "\n" + new Date() + "   "
                 + hostField.getText() + "    " + status);
     }
 
-    private String checkResponseStatus(String response) {
+    public String checkResponseStatus(String response) {
         ResponseStatus status = URLFormatter.getResponseStatus(response);
         if(status == null)
             return "Not found";
