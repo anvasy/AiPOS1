@@ -121,7 +121,6 @@ public class Window {
                 clearHistoryButton,
                 logArea
         );
-
         return vBox;
     }
 
@@ -160,7 +159,7 @@ public class Window {
      * @param response response
      * @return response
      */
-    private String checkResponseStatus(String response) {
+    public String checkResponseStatus(String response) {
         ResponseStatus status = URLFormatter.getResponseStatus(response);
         if(status == null)
             return "Not found";
