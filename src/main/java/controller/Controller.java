@@ -40,6 +40,7 @@ public class Controller {
             response = httpClient.sendRequest(host, port, request);
             logRequestStatus(host, URLFormatter.getResponseStatus(response));
         } catch (NoInternetConnectionException ex) {
+            logger.error(ex);
             return "NO INTERNET CONNECTION!";
         }
         return response;
