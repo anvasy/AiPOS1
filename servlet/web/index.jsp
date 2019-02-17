@@ -11,6 +11,11 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <p>
+    <%=request.getParameter("q")%>
+  </p>
+  <p>
+    <%=request.getParameter("w")%>
+  </p>
   </body>
 </html>

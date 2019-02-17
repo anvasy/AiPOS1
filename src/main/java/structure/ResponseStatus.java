@@ -4,8 +4,36 @@ package structure;
  * @author Anna Vasilyeva
  */
 public enum ResponseStatus {
-    OK(200), CREATED(201), ACCEPTED(202), NO_CONTENT(204), PARTIAL_CONTENT(206),
-    MOVED_PERMANENTLY(301, "This and all future requests should be directed to the given URI."), FOUND(302), NOT_MODIFIED(304),
+    /**
+     *Everything is OK
+     */
+    OK(200),
+    /**
+     *New resourse have been created
+     */
+    CREATED(201),
+    /**
+     *Request accepted, but not processed yet
+     */
+    ACCEPTED(202),
+    /**
+     *Request processed, but response doesn't have content
+     */
+    NO_CONTENT(204),
+    /**
+     *Request processed, but response has only part of content
+     */
+    PARTIAL_CONTENT(206),
+
+    MOVED_PERMANENTLY(301, "This and all future requests should be directed to the given URI."),
+    /**
+     *Requested resourse is available with other URI
+     */
+    FOUND(302),
+    /**
+     *If client uses GET-method with headers "If-Modified-Since"
+     */
+    NOT_MODIFIED(304),
     BAD_REQUEST(400, "The server cannot or will not process the request due to an apparent client error."),
     FORBIDDEN(403, "The request was valid, but the server is refusing action."), NOT_FOUND(404, "The requested resource could not be found"),
     GONE(410, "The resource requested is no longer available and will not be available again."),
