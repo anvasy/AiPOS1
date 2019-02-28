@@ -137,6 +137,7 @@
 	at java.lang.Thread.run(Thread.java:745)
 
 10:47:53,505  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: null
+<<<<<<< HEAD
 23:29:45,376  INFO main - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: null
 23:30:09,171  INFO main - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: null
 23:32:16,873  INFO JavaFX Application Thread - FOR HOST www.martinbroadhurst.com RESPONSE STATUS: OK
@@ -1451,3 +1452,5 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 	at java.lang.Thread.run(Thread.java:745)
 
 20:00:40,601  INFO JavaFX Application Thread - FOR HOST 127.0.0.1 RESPONSE STATUS: null
+=======
+>>>>>>> 0339352fc05cfe9c815fff38381f38cebfd26c1d
