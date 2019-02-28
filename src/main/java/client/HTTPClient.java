@@ -29,10 +29,6 @@ public class HTTPClient {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
-            if(socket == null) {
-                throw new NoInternetConnectionException();
-            }
-
             writer.println(request);
             writer.flush();
             StringBuilder response = new StringBuilder();

@@ -7,10 +7,13 @@ structure\RequestMethod$3.class
 exception\NoInternetConnectionException.class
 structure\Headers.class
 structure\RequestMethod$1.class
+structure\Headers$4.class
 main\Main.class
 structure\ResponseStatus.class
 view\Window.class
+structure\Headers$6.class
 client\HTTPClient.class
+structure\Headers$5.class
 constants\Constants.class
 util\URLFormatter.class
 structure\Headers$1.class

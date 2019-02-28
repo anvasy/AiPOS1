@@ -27,5 +27,23 @@ public enum Headers {
                     " Chrome/66.0.3359.139" +
                     " Safari/537.36";
         }
+    },
+    CONTENT_TYPE {
+        @Override
+        public String toString() {
+            return "Content-Type: text/html; charset=utf-8";
+        }
+    },
+    CONTENT_LENGTH {
+        @Override
+        public String toString() {
+            return "Content-Length: 10";
+        }
+    },
+    HOST {
+        @Override
+        public String toString() {
+            return "Host: localhost";
+        }
     }
 }

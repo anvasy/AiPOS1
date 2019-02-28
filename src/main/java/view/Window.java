@@ -74,12 +74,12 @@ public class Window {
         sendRequestButton.setOnAction(e->{
             int port = Integer.valueOf(portField.getText());
             responseTextArea.setText(history.toString());
-            String request = comboBox.getSelectionModel().getSelectedItem()+"\n";
+            String request = comboBox.getSelectionModel().getSelectedItem()+"\r\n";
             Headers headers[] = Headers.values();
             for(Headers header : headers){
-                request += header + "\n";
+                request += header + "\r\n";
             }
-            request += "\n";
+            request += "\r\n";
             if(comboBox.getSelectionModel().getSelectedItem() == RequestMethod.POST){
                 String[] paramsArray = entityField.getText().split("\n");
                 String entityBody = "";
@@ -87,9 +87,10 @@ public class Window {
                     entityBody += param + "&";
                 }
                 entityBody = entityBody.substring(0, entityBody.length() - 1);
+                entityBody += "\r\n";
                 request += entityBody;
             }
-            history.append("REQUEST\n" + request + "\n");
+            history.append("\n\nREQUEST\\n" + request + "\n");
             returnResponse(controller.sendRequest(hostField.getText(), port, request));
         });
 

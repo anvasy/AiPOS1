@@ -2,6 +2,8 @@ package util;
 
 import structure.ResponseStatus;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,6 +61,8 @@ public class URLFormatter {
         Matcher matcher = hostPattern.matcher(host);
         if (matcher.find())
             host = matcher.group();
+        if(host.equals("localhost"))
+            host = "127.0.0.1";
         return host.replaceAll("http://", "");
     }
 }

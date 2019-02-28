@@ -12,10 +12,13 @@
   </head>
   <body>
   <p>
-    <%=request.getParameter("q")%>
+    <%=session.getAttribute("q")%>
   </p>
   <p>
-    <%=request.getParameter("w")%>
+    <%=session.getAttribute("w")%>
   </p>
+  <form action="/" method="POST">
+    <button name="q" value="q">Ok</button>
+  </form>
   </body>
 </html>
