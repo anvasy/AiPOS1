@@ -2,6 +2,7 @@ package controller;
 
 import client.HTTPClient;
 import exception.NoInternetConnectionException;
+//import org.apache.log4j.Logger;
 import structure.ResponseStatus;
 import util.URLFormatter;
 
@@ -11,7 +12,7 @@ import util.URLFormatter;
  */
 public class Controller {
 
-    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Controller.class);
+    //private Logger logger = org.apache.log4j.Logger.getLogger(Controller.class);
     private HTTPClient httpClient;
 
     /**
@@ -40,7 +41,7 @@ public class Controller {
             response = httpClient.sendRequest(host, port, request);
             logRequestStatus(host, URLFormatter.getResponseStatus(response));
         } catch (NoInternetConnectionException ex) {
-            logger.error(ex);
+            //logger.error(ex);
             return "NO INTERNET CONNECTION!";
         }
         return response;
@@ -53,6 +54,6 @@ public class Controller {
      * @param status Status of response - code and message
      */
     private void logRequestStatus(String host, ResponseStatus status) {
-        logger.info("FOR HOST " + host + " RESPONSE STATUS: " + status);
+        //logger.info("FOR HOST " + host + " RESPONSE STATUS: " + status);
     }
 }

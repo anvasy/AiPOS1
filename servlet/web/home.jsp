@@ -11,12 +11,12 @@
     <title>$Title$</title>
   </head>
   <body>
-  <p>
-    <%=session.getAttribute("q")%>
-  </p>
-  <p>
-    <%=session.getAttribute("w")%>
-  </p>
+  <h1>
+   ${sessionScope.get("q")}
+  </h1>
+  <h1>
+    ${sessionScope.get("b")}
+  </h1>
   <form action="/" method="POST">
     <button name="q" value="q">Ok</button>
   </form>

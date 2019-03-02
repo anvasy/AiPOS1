@@ -31,19 +31,13 @@ public enum Headers {
     CONTENT_TYPE {
         @Override
         public String toString() {
-            return "Content-Type: text/html; charset=utf-8";
+            return "Content-Type: application/x-www-form-urlencoded";
         }
     },
     CONTENT_LENGTH {
         @Override
         public String toString() {
-            return "Content-Length: 10";
-        }
-    },
-    HOST {
-        @Override
-        public String toString() {
-            return "Host: localhost";
+            return "Content-Length: ";
         }
     }
 }

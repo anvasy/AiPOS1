@@ -77,7 +77,12 @@ public class Window {
             String request = comboBox.getSelectionModel().getSelectedItem()+"\r\n";
             Headers headers[] = Headers.values();
             for(Headers header : headers){
-                request += header + "\r\n";
+                if(header.equals(Headers.CONTENT_LENGTH)) {
+                    request += header;
+                    request += entityField.getText().length() + "\r\n";
+                } else {
+                    request += header + "\r\n";
+                }
             }
             request += "\r\n";
             if(comboBox.getSelectionModel().getSelectedItem() == RequestMethod.POST){
@@ -90,7 +95,7 @@ public class Window {
                 entityBody += "\r\n";
                 request += entityBody;
             }
-            history.append("\n\nREQUEST\\n" + request + "\n");
+            history.append("\n\nREQUEST\n" + request + "\n");
             returnResponse(controller.sendRequest(hostField.getText(), port, request));
         });
 

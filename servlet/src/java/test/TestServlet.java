@@ -11,19 +11,16 @@ public class TestServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType ("text/html;charset=utf-8");
         HttpSession session = req.getSession();
-        session.setAttribute("q", "q");
-        session.setAttribute("w", "w");
-        resp.sendRedirect("/index.jsp");
+        session.setAttribute("q", req.getParameter("q"));
+        session.setAttribute("b", req.getParameter("b"));
+        getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String q = req.getParameter("q");
-        String w = req.getParameter("w");
-        req.setAttribute("q", q);
-        req.setAttribute("w", w);
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
     }
 
 }

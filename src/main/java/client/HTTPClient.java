@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class HTTPClient {
 
-    private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(HTTPClient.class);
+    //private org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(HTTPClient.class);
 
     /**
      * Sends request to server
@@ -44,7 +44,7 @@ public class HTTPClient {
             return response.toString();
         }
         catch (IOException e){
-            logger.error(ExceptionUtils.getStackTrace(e));
+           // logger.error(ExceptionUtils.getStackTrace(e));
             return e.getMessage();
         }
     }

@@ -7,19 +7,12 @@ structure\RequestMethod$3.class
 exception\NoInternetConnectionException.class
 structure\Headers.class
 structure\RequestMethod$1.class
-<<<<<<< HEAD
 structure\Headers$4.class
-=======
->>>>>>> 0339352fc05cfe9c815fff38381f38cebfd26c1d
 main\Main.class
 structure\ResponseStatus.class
 view\Window.class
-structure\Headers$6.class
 client\HTTPClient.class
-<<<<<<< HEAD
 structure\Headers$5.class
-=======
->>>>>>> 0339352fc05cfe9c815fff38381f38cebfd26c1d
 constants\Constants.class
 util\URLFormatter.class
 structure\Headers$1.class
